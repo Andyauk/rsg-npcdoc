@@ -217,7 +217,7 @@ Citizen.CreateThread(
                                 type = 'client',
                                 event = 'rsg-npcdoc:client:startTreatmentCheck',
                                 icon = 'fas fa-hospital',
-                                label = 'Dr Goodfellow.'
+                                label = 'Dr Goodfellow'
                             }
                         },
                         distance = 4.00
@@ -228,7 +228,7 @@ Citizen.CreateThread(
                     v.name,
                     vector3(v.coords.x, v.coords.y, v.coords.z),
                     RSGCore.Shared.Keybinds['J'],
-                    'Dr Goodfellow.',
+                    'Dr Goodfellow',
                     {
                         type = 'client',
                         event = 'rsg-npcdoc:client:startTreatmentCheck',
