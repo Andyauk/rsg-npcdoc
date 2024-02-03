@@ -251,3 +251,4 @@ AddEventHandler(
         end
     end
 )
+print("^2Script by ^1Andyauk^7")
