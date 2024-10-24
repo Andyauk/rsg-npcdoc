@@ -18,26 +18,27 @@ local function GetTreatedDead()
                 'rsg-medic:server:payFortreatment',
                 function(payed)
                     if payed then
-                        RSGCore.Functions.Progressbar(
-                            'progressbar',
-                            'You will be revived',
-                            Config.ProgressTime,
-                            true,
-                            false,
-                            {
-                                disableMovement = true,
-                                disableCarMovement = true,
-                                disableMouse = true,
-                                disableCombat = true
+                        lib.progressBar({
+                            duration = Config.ProgressTime,
+                            position = 'bottom',
+                            useWhileDead = false,
+                            canCancel = false,
+                            disableControl = true,
+                            disable = {
+                                move = false,
+                                car = false,
+                                mouse = false,
+                                combat = true,
                             },
-                            {},
-                            {},
-                            {},
-                            function()
-                                TriggerEvent('rsg-medic:client:adminRevive')
-                                lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
-                            end
-                        )
+                            anim = {
+                                dict = 'script_common@dead@male',
+                                clip = 'faceup_01',
+                                flag = 1,
+                            },
+                            label = 'Getting Help...',
+                        })
+                        TriggerEvent('rsg-medic:client:adminRevive', source)
+                        lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
                     else
                         lib.notify({title = 'Not enough money', type = 'error', duration = 7500})
                     end
@@ -50,26 +51,27 @@ local function GetTreatedDead()
         end
     else
         if PlayerData.metadata['isdead'] or PlayerData.metadata['inlaststand'] then
-            RSGCore.Functions.Progressbar(
-                'progressbar',
-                'You will be revived',
-                Config.ProgressTime,
-                true,
-                false,
-                {
-                    disableMovement = true,
-                    disableCarMovement = true,
-                    disableMouse = true,
-                    disableCombat = true
+            lib.progressBar({
+                duration = Config.ProgressTime,
+                position = 'bottom',
+                useWhileDead = false,
+                canCancel = false,
+                disableControl = true,
+                disable = {
+                    move = false,
+                    car = false,
+                    mouse = false,
+                    combat = true,
                 },
-                {},
-                {},
-                {},
-                function()
-                    TriggerEvent('rsg-medic:client:adminRevive')
-                    lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
-                end
-            )
+                anim = {
+                    dict = 'script_common@dead@male',
+                    clip = 'faceup_01',
+                    flag = 1,
+                },
+                label = 'Getting Help...',
+            })
+            TriggerEvent('rsg-medic:client:adminRevive', source)
+            lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
         else
             lib.notify({title = 'You dont need treatment', type = 'error', duration = 7500})
         end
@@ -82,26 +84,27 @@ local function GetTreatedNormal()
             'rsg-medic:server:payFortreatment',
             function(payed)
                 if payed then
-                    RSGCore.Functions.Progressbar(
-                        'progressbar',
-                        'You will be revived',
-                        Config.ProgressTime,
-                        true,
-                        false,
-                        {
-                            disableMovement = true,
-                            disableCarMovement = true,
-                            disableMouse = true,
-                            disableCombat = true
+                    lib.progressBar({
+                        duration = Config.ProgressTime,
+                        position = 'bottom',
+                        useWhileDead = false,
+                        canCancel = false,
+                        disableControl = true,
+                        disable = {
+                            move = false,
+                            car = false,
+                            mouse = false,
+                            combat = true,
                         },
-                        {},
-                        {},
-                        {},
-                        function()
-                            TriggerEvent('rsg-medic:client:adminRevive')
-                            lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
-                        end
-                    )
+                        anim = {
+                            dict = 'script_common@dead@male',
+                            clip = 'faceup_01',
+                            flag = 1,
+                        },
+                        label = 'Getting Help...',
+                    })
+                    TriggerEvent('rsg-medic:client:adminRevive', source)
+                    lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
                 else
                     lib.notify({title = 'Not enough money', type = 'error', duration = 7500})
                 end
@@ -110,26 +113,27 @@ local function GetTreatedNormal()
             Config.Extras.TreatmentPayType
         )
     else
-        RSGCore.Functions.Progressbar(
-            'progressbar',
-            'You will be revived',
-            Config.ProgressTime,
-            true,
-            false,
-            {
-                disableMovement = true,
-                disableCarMovement = true,
-                disableMouse = true,
-                disableCombat = true
+        lib.progressBar({
+            duration = Config.ProgressTime,
+            position = 'bottom',
+            useWhileDead = false,
+            canCancel = false,
+            disableControl = true,
+            disable = {
+                move = false,
+                car = false,
+                mouse = false,
+                combat = true,
             },
-            {},
-            {},
-            {},
-            function()
-                TriggerEvent('rsg-medic:client:adminRevive')
-                lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
-            end
-        )
+            anim = {
+                dict = 'script_common@dead@male',
+                clip = 'faceup_01',
+                flag = 1,
+            },
+            label = 'Getting Help...',
+        })
+        TriggerEvent('rsg-medic:client:adminRevive', source)
+        lib.notify({title = 'make a comeback', type = 'success', duration = 5000})
     end
 end
 
@@ -178,16 +182,16 @@ Citizen.CreateThread(
                 end
                 doctors =
                     CreatePed(
-                    GetHashKey(Config.Ped),
-                    v.coords.x,
-                    v.coords.y,
-                    v.coords.z - 0.8,
-                    v.coords.w,
-                    true,
-                    false,
-                    0,
-                    0
-                )
+                        GetHashKey(Config.Ped),
+                        v.coords.x,
+                        v.coords.y,
+                        v.coords.z - 0.8,
+                        v.coords.w,
+                        true,
+                        false,
+                        0,
+                        0
+                    )
                 while not DoesEntityExist(doctors) do
                     Wait(300)
                 end
